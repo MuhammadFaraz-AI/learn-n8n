@@ -1,0 +1,113 @@
+{
+  "name": "workflow-1",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "80227f5b-c783-4aa0-8254-f8499ba7aaec",
+              "name": "name",
+              "value": "ali",
+              "type": "string"
+            },
+            {
+              "id": "49ed794e-7ea3-4ffa-b387-c4d2ae647eed",
+              "name": "age",
+              "value": 28,
+              "type": "number"
+            },
+            {
+              "id": "dd653e4b-3188-4818-8f72-a36da5294e08",
+              "name": "city",
+              "value": "karachi",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "e383cf85-3198-41c5-bb90-60e88a25dfd2",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5351e28b-f47e-44ea-8009-c477b0534cd0",
+              "name": " greeting",
+              "value": "=\"Hello {{ $json.name }}, you are {{ $json.age }} and live in {{ $json.city }}\"",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        416,
+        0
+      ],
+      "id": "cb96dec8-072a-4b67-914b-26d1f22c0375",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        0
+      ],
+      "id": "ee474a86-0df0-4b6e-815e-0505e4ec1003",
+      "name": "When clicking ‘Execute workflow’"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "03b2c969-d1af-4a9d-ad44-04a671f87527",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "35fd6bf22491484b136bf20d1aca87e4aee15a01ddb5e1da7d0328a6f9a20c26"
+  },
+  "nodeGroups": [],
+  "id": "dy7llD3SFfPBoMw1",
+  "tags": []
+}
