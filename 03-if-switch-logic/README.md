@@ -59,9 +59,7 @@ return [
 
 ## Screenshot
 
-![Workflow 3 result](03-if-switch-logic/workflow-3-result.png)
-
-*(Replace the URL above with your uploaded screenshot's raw GitHub URL — see repo root README for instructions on how to get it.)*
+![Workflow 3 result](workflow-3-result.png)
 
 ## How to run this
 1. Try building it yourself from the instructions above first
