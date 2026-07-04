@@ -1,0 +1,249 @@
+{
+  "name": "03-if-switch-logic",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "c2144909-f7df-4de3-8cf8-769d7b6a39c4",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "jsCode": "return [\n  { json: { customer: \"Sara\", amount: 25 } },\n  { json: { customer: \"Bilal\", amount: 120 } },\n  { json: { customer: \"Zara\", amount: 550 } },\n  { json: { customer: \"Omar\", amount: 15 } }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "16ca8f8e-808e-4f7d-b777-d852f6b78172",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.amount }}",
+                    "rightValue": 50,
+                    "operator": {
+                      "type": "number",
+                      "operation": "lt"
+                    },
+                    "id": "5e4dfa47-bf99-435d-a46c-92accb027ea1"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Small"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "c248c541-885a-43c3-9ba1-53b7e4905720",
+                    "leftValue": "={{ $json.amount }}",
+                    "rightValue": 200,
+                    "operator": {
+                      "type": "number",
+                      "operation": "lt"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "medium"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "5c46f841-4a08-4b7c-9164-5a5eebef2305",
+                    "leftValue": "={{ $json.amount }}",
+                    "rightValue": 200,
+                    "operator": {
+                      "type": "number",
+                      "operation": "gt"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "large"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        416,
+        -16
+      ],
+      "id": "64d4d9f5-e7dd-4266-8de9-38db167752b9",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "08b6b379-018e-4d8a-afae-713718895377",
+              "name": "tier",
+              "value": "=small",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        720,
+        -208
+      ],
+      "id": "aba0fcb4-1a52-4262-bcb9-9a71c4fcd4c1",
+      "name": "small"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "08b6b379-018e-4d8a-afae-713718895377",
+              "name": "tier",
+              "value": "= medium",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        720,
+        16
+      ],
+      "id": "5fc868fb-f0cb-46c3-9761-07587dc4fcc4",
+      "name": "medium"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "08b6b379-018e-4d8a-afae-713718895377",
+              "name": "tier",
+              "value": "=large",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        720,
+        240
+      ],
+      "id": "b1ad63fa-eb0e-4760-a3f9-10ac0cf57726",
+      "name": "large"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "small",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "medium",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "large",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "1ceb557d-c909-4463-b8a7-96a00fa2075c",
+  "meta": {
+    "instanceId": "35fd6bf22491484b136bf20d1aca87e4aee15a01ddb5e1da7d0328a6f9a20c26"
+  },
+  "nodeGroups": [],
+  "id": "BtnmmYyIYyBKR4HP",
+  "tags": []
+}
