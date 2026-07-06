@@ -37,7 +37,7 @@ return [
 ```
 
 ## Screenshot
-!(workflow-4.png)
+![workflow-4-image](workflow-4.png)
 
 ## What I learned / notes
 - The loop body ran once per item (5 times), visible via execution highlighting
