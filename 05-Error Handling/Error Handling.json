@@ -1,0 +1,121 @@
+{
+  "name": "Error Handling",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "154f9aa7-7a83-4173-bbaf-3d761fac3695",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "jsCode": "if (true) {\n  throw new Error(\"Something went wrong on purpose\");\n}\nreturn [{ json: { ok: true } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "5561af00-ab38-4be0-9587-3e154aaef784",
+      "name": "Code in JavaScript",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "43015c67-2aab-418d-a504-3b0a0343631c",
+              "name": "=errorMessage",
+              "value": "={{ $json.error}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        496,
+        128
+      ],
+      "id": "9d45cfa5-031a-422c-b52f-1353dd8be61d",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a1296e17-d1aa-4a39-b578-c8c99145ee4a",
+              "name": "result ",
+              "value": "=\"success\"",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        496,
+        -96
+      ],
+      "id": "e31962a3-a229-41dd-a733-ed41a01ffa62",
+      "name": "Edit Fields1"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "36bacd1d-30f8-451f-8356-7095d6494704",
+  "meta": {
+    "instanceId": "35fd6bf22491484b136bf20d1aca87e4aee15a01ddb5e1da7d0328a6f9a20c26"
+  },
+  "nodeGroups": [],
+  "id": "1ILwCqmAQ7Te0xEk",
+  "tags": []
+}
