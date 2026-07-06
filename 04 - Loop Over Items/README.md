@@ -37,7 +37,7 @@ return [
 ```
 
 ## Screenshot
-![Workflow 4 result](PASTE_YOUR_IMAGE_URL_HERE)
+!(workflow-4.png)
 
 ## What I learned / notes
 - The loop body ran once per item (5 times), visible via execution highlighting
