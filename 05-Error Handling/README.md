@@ -32,7 +32,7 @@ Error branch fires (1 item):
 ```
 
 ## Screenshot
-![Workflow 5 result](PASTE_YOUR_IMAGE_URL_HERE)
+![Workflow 5 result](workflow-5)
 
 ## What I learned / notes
 - Without "Continue on Fail", this workflow would just stop entirely on error — no graceful fallback
