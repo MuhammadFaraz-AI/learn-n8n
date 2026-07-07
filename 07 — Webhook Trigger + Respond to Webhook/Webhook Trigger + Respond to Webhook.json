@@ -1,0 +1,95 @@
+{
+  "name": "Webhook Trigger + Respond to Webhook",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "hello-test",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -80,
+        0
+      ],
+      "id": "a2aa6fb5-67b2-48cd-84c2-c9caa4c7fc8d",
+      "name": "Webhook",
+      "webhookId": "ff1a6ced-1eed-49d0-be21-b63c38d0dcbb"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "93f78bbe-3433-4552-8148-6529edbaac10",
+              "name": " message",
+              "value": "=\"Hello, your webhook works!\"",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        160,
+        0
+      ],
+      "id": "6d18fd96-7e6d-4fb1-aeb6-784c1b9794f0",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        400,
+        0
+      ],
+      "id": "f84c9183-d554-4a20-a337-340b709d4982",
+      "name": "Respond to Webhook"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "06b5cb4e-b16b-4684-925d-16f5cebc1b02",
+  "meta": {
+    "instanceId": "35fd6bf22491484b136bf20d1aca87e4aee15a01ddb5e1da7d0328a6f9a20c26"
+  },
+  "nodeGroups": [],
+  "id": "BktyhWke4IAunBK9",
+  "tags": []
+}
