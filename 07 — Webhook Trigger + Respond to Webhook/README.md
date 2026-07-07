@@ -31,7 +31,7 @@ Visiting the Test URL in a browser returns:
 ```
 
 ## Screenshot
-![Workflow 7 result](PASTE_YOUR_IMAGE_URL_HERE)
+![Workflow 7 result](workflow-7)
 
 ## Common error & fix
 **Error:** `Received request for unknown webhook` / `Unused Respond to Webhook node found in the workflow`
