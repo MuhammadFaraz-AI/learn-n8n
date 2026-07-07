@@ -1,0 +1,91 @@
+{
+  "name": "HTTP Request Node (GET a public API)",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -144,
+        16
+      ],
+      "id": "ef6ed1b2-6bfd-4a41-8b73-bc22255f8b42",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "https://jsonplaceholder.typicode.com/users/1",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        128,
+        16
+      ],
+      "id": "c8b9b084-c750-4344-b25a-d4cdebc2c4c0",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a77518fd-f707-412a-b2ae-d547ab4478b4",
+              "name": " summary",
+              "value": "={{ $json.name }} works at {{ $json.company.name }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        368,
+        16
+      ],
+      "id": "fc96b735-63b5-40ef-9560-bfdb640f55c7",
+      "name": "Edit Fields"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "5465242c-99ac-4c65-8c79-6a8e576434ff",
+  "meta": {
+    "instanceId": "35fd6bf22491484b136bf20d1aca87e4aee15a01ddb5e1da7d0328a6f9a20c26"
+  },
+  "nodeGroups": [],
+  "id": "xHUUJ9C20MvLau3u",
+  "tags": []
+}
