@@ -32,7 +32,7 @@ Manual Trigger → HTTP Request (GET) → Edit Fields (summary)
 *(exact name/company will match whatever `users/1` returns from the API)*
 
 ## Screenshot
-![Workflow 8 result](workflow-8)
+![Workflow 8 result](workflow-8.png)
 
 ## What I learned / notes
 - The HTTP Request node auto-parses JSON responses — no manual `JSON.parse()` needed
