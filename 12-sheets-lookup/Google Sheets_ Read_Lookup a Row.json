@@ -1,0 +1,83 @@
+{
+  "name": "Google Sheets: Read/Lookup a Row",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "48c0a5e8-3c8a-417a-928a-8a22bfffd4ae",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1eVcb7YtYP9GtQNypRIo3r9XpRCoGNRlG4kGTocDbgEw/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1eVcb7YtYP9GtQNypRIo3r9XpRCoGNRlG4kGTocDbgEw/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": " email",
+              "lookupValue": "=ali@example.com"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        208,
+        0
+      ],
+      "id": "9485ccac-24b4-43d5-987b-18163a7aa857",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "43KBYWV2TFR1goMt",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "99fed812-33fe-414c-af1c-79d5575924d2",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "35fd6bf22491484b136bf20d1aca87e4aee15a01ddb5e1da7d0328a6f9a20c26"
+  },
+  "nodeGroups": [],
+  "id": "xc8zZG9C2W7FJlM3",
+  "tags": []
+}
